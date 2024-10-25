@@ -84,6 +84,22 @@ void jogar() {
     printf("Pontuacao final: %d\n", pontuacao);
 }
 
+void exibir_placar() {
+    FILE *arquivo_placar;
+    Jogador jogadores[MAX_JOGADORES];
+    int i, qtd_jogadores = 0;
+
+    arquivo_placar = fopen("placar_jogadores.txt", "r");
+    if (arquivo_placar == NULL) {
+        printf("Erro ao abrir o arquivo placar_jogadores.txt.\n");
+        return;
+    }
+
+    while (fscanf(arquivo_placar, "%s %d", jogadores[qtd_jogadores].nome, &jogadores[qtd_jogadores].pontuacao) == 2) {
+        qtd_jogadores++;
+    }
+
+    fclose(arquivo_placar);
 
 void exibir_tutorial() {
     FILE *arquivo_tutorial;
@@ -101,3 +117,4 @@ void exibir_tutorial() {
 
     fclose(arquivo_tutorial);
 }
+
