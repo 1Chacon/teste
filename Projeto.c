@@ -84,7 +84,6 @@ void jogar() {
     printf("Pontuacao final: %d\n", pontuacao);
 }
 
-
 void exibir_placar() {
     FILE *arquivo_placar;
     Jogador jogadores[MAX_JOGADORES];
@@ -101,3 +100,21 @@ void exibir_placar() {
     }
 
     fclose(arquivo_placar);
+
+void exibir_tutorial() {
+    FILE *arquivo_tutorial;
+    char linha[1024];
+
+    arquivo_tutorial = fopen("tutorial.txt", "r");
+    if (arquivo_tutorial == NULL) {
+        printf("Erro ao abrir o arquivo tutorial.txt.\n");
+        return;
+    }
+
+    while (fgets(linha, sizeof(linha), arquivo_tutorial)) {
+        printf("%s", linha);
+    }
+
+    fclose(arquivo_tutorial);
+}
+
